@@ -49,22 +49,119 @@ header {
 }
 
 .container {
-  disply: grid;
+  display: grid;
   grid-template-rows: repeat(3, 100vh);
   height: 100vh;
 }
 
 #about {
   padding-top: 50px;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #about-container {
+    display: grid;
+    grid-column-gap: 15px;
+    grid-template-columns: 500px auto;
+    grid-template-rows: 100%;
+    grid-template-areas:
+      "content video";
+  
+    #about-content {
+      display: grid;
+      grid-template-rows: 40px auto;
+      grid-template-areas: 
+        "title"
+        "paragraph";
+  
+      h1 {
+        grid-area: title;
+      }
+  
+      p {
+        grid-area: paragraph;
+      }
+    }
+  
+    iframe {
+      grid-area: video;
+    }
+  }
 }
 
 #tabletop {
   padding-top: 50px;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #tabletop-container {
+    display: grid;
+    grid-column-gap: 15px;
+    grid-template-columns: 500px auto;
+    grid-template-rows: 100%;
+    grid-template-areas:
+      "content img";
+  
+    #tabletop-content {
+      display: grid;
+      grid-template-rows: 40px auto;
+      grid-template-areas: 
+        "title"
+        "paragraph";
+  
+      h1 {
+        grid-area: title;
+      }
+  
+      p {
+        grid-area: paragraph;
+      }
+    }
+  
+    img {
+      grid-area: img;
+      width: 560px;
+      height: 315px;
+    }
+  }
 }
 
 #digital {
   padding-top: 50px;
-  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  #digital-container {
+    display: grid;
+    grid-column-gap: 15px;
+    grid-template-columns: 500px auto;
+    grid-template-rows: 100%;
+    grid-template-areas:
+      "content img";
+  
+    #digital-content {
+      display: grid;
+      grid-template-rows: 40px auto;
+      grid-template-areas: 
+        "title"
+        "paragraph";
+  
+      h1 {
+        grid-area: title;
+      }
+  
+      p {
+        grid-area: paragraph;
+      }
+    }
+  
+    img {
+      grid-area: img;
+      width: 560px;
+      height: 315px;
+    }
+  }
 }
