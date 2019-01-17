@@ -1,5 +1,5 @@
 * {
-  font-family: 'Karla', serif;
+  font-family: 'Karla', sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,7 +13,7 @@ header {
   position: fixed;
   background-color: #f1c40f;
   display: flex;
-  flex-direction: row;
+  //flex-direction: row;
   justify-content: space-around;
 
   img {
@@ -48,25 +48,48 @@ header {
   }
 }
 
+#empty-space {
+  width: 100%;
+  height: 50px;
+}
+
 .container {
   display: grid;
-  grid-template-rows: repeat(3, 100vh);
+  grid-template-rows: repeat(4, 100vh);
   height: 100vh;
 }
 
+#splash-screen {
+  position: relative;
+  overflow: hidden;
+  z-index: -1;
+  
+  video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -2;
+    overflow: hidden;
+  }
+}
+
 #about {
-  padding-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   #about-container {
+    padding: 100px;
     display: grid;
     grid-column-gap: 15px;
-    grid-template-columns: 500px auto;
+    grid-template-columns: 500px 500px;
     grid-template-rows: 100%;
     grid-template-areas:
-      "content video";
+      "content img";
   
     #about-content {
       display: grid;
@@ -81,17 +104,19 @@ header {
   
       p {
         grid-area: paragraph;
+        font-family: 'Montserrat', sans-serif;
       }
     }
   
-    iframe {
-      grid-area: video;
+    img {
+      grid-area: img;
+      width: 500px;
+      height: 100%;
     }
   }
 }
 
 #tabletop {
-  padding-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -117,19 +142,19 @@ header {
   
       p {
         grid-area: paragraph;
+        font-family: 'Montserrat', sans-serif;
       }
     }
   
     img {
       grid-area: img;
-      width: 560px;
-      height: 315px;
+      width: 500px;
+      height: 100%;
     }
   }
 }
 
 #digital {
-  padding-top: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -155,13 +180,14 @@ header {
   
       p {
         grid-area: paragraph;
+        font-family: 'Montserrat', sans-serif;
       }
     }
   
     img {
       grid-area: img;
-      width: 560px;
-      height: 315px;
+      width: 500px;
+      height: 100%;
     }
   }
 }
