@@ -7,13 +7,13 @@
 }
 
 header {
+  z-index: 2;
   top: 0;
   width: 100%;
   height: 50px;
   position: fixed;
   background-color: #f1c40f;
   display: flex;
-  //flex-direction: row;
   justify-content: space-around;
 
   img {
@@ -44,59 +44,101 @@ header {
     a {
       color: black;
       text-decoration: none;
+
+      &:hover {
+        opacity: .5;
+      }
     }
   }
-}
-
-#empty-space {
-  width: 100%;
-  height: 50px;
 }
 
 .container {
   display: grid;
   grid-template-rows: repeat(4, 100vh);
-  height: 100vh;
+  grid-template-areas: 
+    "splash"
+    "about"
+    "tabletop"
+    "digital";
+  min-height: 100%;
 }
 
 #splash-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: relative;
   overflow: hidden;
-  z-index: -1;
+
+  h1 {
+    font-size: 6em;
+    color: white;
+  }
+
+  #form {
+    margin-top: 15px;
+    display: grid;
+    grid-column-gap: 5px;
+    grid-template-columns: 300px 80px;
+
+    input[type="email"] {
+      font-size: 1.5em;
+      height: 40px;
+    }
+
+    input[type="submit"] {
+      font-size: 1.5em;
+      font-weight: bold;
+      background-color: #f1c40f;
+      height: 40px;
+      border-radius: 3px;
+      border: none;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
   
   video {
     position: absolute;
-    top: 0;
-    left: 0;
-    min-width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
-    z-index: -2;
+    object-fit: cover;
+    z-index: -1;
     overflow: hidden;
   }
 }
 
-#about {
+.section {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 1.2em;
 
-  #about-container {
-    padding: 100px;
+  &-container {
     display: grid;
-    grid-column-gap: 15px;
-    grid-template-columns: 500px 500px;
+    grid-template-columns: 100%;
     grid-template-rows: 100%;
-    grid-template-areas:
-      "content img";
+    grid-template-areas: "content";
+    justify-items: center;
   
-    #about-content {
+    &-content {
+      grid-area: content;
+      justify-items: center;
       display: grid;
-      grid-template-rows: 40px auto;
+      grid-row-gap: 15px;
+      grid-template-rows: auto auto auto;
       grid-template-areas: 
         "title"
-        "paragraph";
+        "paragraph"
+        "img";
   
       h1 {
         grid-area: title;
@@ -104,90 +146,15 @@ header {
   
       p {
         grid-area: paragraph;
+        max-width: 1000px;
         font-family: 'Montserrat', sans-serif;
       }
-    }
-  
-    img {
-      grid-area: img;
-      width: 500px;
-      height: 100%;
-    }
-  }
-}
 
-#tabletop {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  #tabletop-container {
-    display: grid;
-    grid-column-gap: 15px;
-    grid-template-columns: 500px auto;
-    grid-template-rows: 100%;
-    grid-template-areas:
-      "content img";
-  
-    #tabletop-content {
-      display: grid;
-      grid-template-rows: 40px auto;
-      grid-template-areas: 
-        "title"
-        "paragraph";
-  
-      h1 {
-        grid-area: title;
+      img {
+        grid-area: img;
+        max-width: 35%;
+        height: auto;
       }
-  
-      p {
-        grid-area: paragraph;
-        font-family: 'Montserrat', sans-serif;
-      }
-    }
-  
-    img {
-      grid-area: img;
-      width: 500px;
-      height: 100%;
-    }
-  }
-}
-
-#digital {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  #digital-container {
-    display: grid;
-    grid-column-gap: 15px;
-    grid-template-columns: 500px auto;
-    grid-template-rows: 100%;
-    grid-template-areas:
-      "content img";
-  
-    #digital-content {
-      display: grid;
-      grid-template-rows: 40px auto;
-      grid-template-areas: 
-        "title"
-        "paragraph";
-  
-      h1 {
-        grid-area: title;
-      }
-  
-      p {
-        grid-area: paragraph;
-        font-family: 'Montserrat', sans-serif;
-      }
-    }
-  
-    img {
-      grid-area: img;
-      width: 500px;
-      height: 100%;
     }
   }
 }
